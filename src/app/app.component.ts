@@ -30,7 +30,7 @@ export class AppComponent {
       //   ownerPassword: 'pwd',
       // },
     });
-
+    console.log(doc.internal.pageSize.getHeight());
     doc.html(pages, {
       margin: [72, 72],
       autoPaging: 'text',
@@ -60,12 +60,12 @@ export class AppComponent {
           doc.text(
             `Angular HTML to PDF converter using jsPDF`,
             40 - 20,
-            60 - 30
+            60 - 30,
           );
           doc.text(
             `page ${String(i)} of ${String(doc.getNumberOfPages())}`,
             310 - 20,
-            830 - 30
+            830 - 30,
           );
           doc.addImage({
             // add image in specified position
