@@ -19,7 +19,7 @@ export class AppComponent {
   // this.pdfOptions.value.pageFormat  // better to create pdfOptions object to hold all configuration related to pdf so that can be reused.
   exportAllToPDF(pages: HTMLElement) {
     const doc = new jsPDF({
-      unit: 'px',
+      unit: 'px', // if 'pt' then format can be used as 'a4','a3'
       format: [595, 842],
       orientation: 'p',
       compress: true,
@@ -30,7 +30,7 @@ export class AppComponent {
       //   ownerPassword: 'pwd',
       // },
     });
-    console.log(doc.internal.pageSize.getHeight());
+    // console.log(doc.internal.pageSize.getHeight());// doc.internal.pageSize.getWidth() to get the pdg width and height.
     doc.html(pages, {
       margin: [72, 72],
       autoPaging: 'text',
@@ -80,6 +80,7 @@ export class AppComponent {
           });
         }
         // doc.save('pdf-file');
+        //console.log(doc);
         doc.output('dataurlnewwindow');
       },
     });
