@@ -19,7 +19,7 @@ export class AppComponent {
   // this.pdfOptions.value.pageFormat  // better to create pdfOptions object to hold all configuration related to pdf so that can be reused.
   exportAllToPDF(pages: HTMLElement) {
     const doc = new jsPDF({
-      unit: 'px',
+      unit: 'px', // if 'pt' then format can be used as 'a4','a3'
       format: [595, 842],
       orientation: 'p',
       compress: true,
@@ -30,7 +30,7 @@ export class AppComponent {
       //   ownerPassword: 'pwd',
       // },
     });
-    console.log(doc.internal.pageSize.getHeight());
+    // console.log(doc.internal.pageSize.getHeight());// doc.internal.pageSize.getWidth() to get the pdg width and height.
     doc.html(pages, {
       margin: [72, 72],
       autoPaging: 'text',
@@ -80,6 +80,7 @@ export class AppComponent {
           });
         }
         // doc.save('pdf-file');
+        //console.log(doc);
         doc.output('dataurlnewwindow');
       },
     });
@@ -89,3 +90,19 @@ export class AppComponent {
     window.print();
   }
 }
+
+/*
+References -- 
+
+https://artskydj.github.io/jsPDF/docs/jsPDF.html  // official doc for jspdf
+
+https://medium.com/@berkayyyulguel/angular-convert-html-to-pdf-via-jspdf-8c63c8c61ad9  // example to convert html to pdf 
+
+https://phppot.com/javascript/jspdf-html-example/     // example of jspdf
+
+https://www.geeksforgeeks.org/how-to-generate-pdf-file-using-jspdf-library/    // how to create pdf with js
+
+
+https://shamaahlawat.medium.com/page-split-using-jspdf-and-html2canvas-in-react-js-while-downloading-pdf-6c75da960019    // page split using react and more jspdf method usage example
+
+*/
